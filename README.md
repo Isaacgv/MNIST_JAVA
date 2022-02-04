@@ -10,10 +10,6 @@ In src.fr.epita.mnist
   - ImageMNIST: Class that will contain 2 fields : “label” and “dataMatrix”
     - getPixels: return dataMatrix
     - setPixels: set values to dataMatrix
-    
-- launchers:
-  - PredictListConfusionMatrix
-  - PredictSTD
 
 - services:
   - CentroidClassifier
