@@ -14,12 +14,12 @@ import static fr.epita.mnist.services.CentroidClassifierSTD.*;
 public class PredictSTDConfusionMatrix {
     public static void main(String[] args) throws Exception {
         ImageCsvDAO reader = new ImageCsvDAO();
-        List<ImageMNIST> imagesTrain = reader.getAllImages(new File("./mob-programming/mnist_train.csv"));
+        List<ImageMNIST> imagesTrain = reader.getAllImages(new File("./mnist_train.csv"));
 
         Map<Double, ImageMNIST> means = trainCentroids(imagesTrain);
         Map<Double, ImageMNIST> imagesCentroidTrain = trainCentroidsSTD(imagesTrain, means);
 
-        List<ImageMNIST> imagesTest = reader.getAllImages(new File("./mob-programming/mnist_test.csv"));
+        List<ImageMNIST> imagesTest = reader.getAllImages(new File("./mnist_test.csv"));
         Map<Double, List<ImageMNIST>> imagesByLabelTest = imagesTest.stream().collect(Collectors.groupingBy(ImageMNIST::getLabel));
 
         int[][] resultLabel = predictListSTD(imagesCentroidTrain, imagesByLabelTest, means);
